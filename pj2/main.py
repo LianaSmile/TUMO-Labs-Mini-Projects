@@ -18,64 +18,38 @@ output the sum of two random numbers. By following the rules of the game, your p
 should decide whether the player wins or loses.
 """
 
-ROLLS_COUNT = 0
-GOAL = 'Not Set'
-
-
 def simulator():
-    """
-    This function generates 2 random number for each dice.
-    """
     dice_1 = randint(1, 6)
     dice_2 = randint(1, 6)
 
     return dice_1, dice_2
 
 
-def check_the_sum(dices):
-    """
-    This function checks the roll number and sets goals number if needed, then checks who wins, returns answer.
-    """
-    global GOAL
-    sum_of_dices = sum(dices)
-
-    if ROLLS_COUNT == 1 and sum_of_dices in [4, 5, 6, 8, 9, 10]:
-        GOAL = sum_of_dices
-
-    if GOAL is None:
-        if sum_of_dices in [7, 11]:
-            game_answer = 'Congratulations, you win!'
-        elif sum_of_dices in [2, 3, 12]:
-            game_answer = 'Alas, Casino wins!'
-        else:
-            game_answer = 'No one wins!'
-    else:
-        if sum_of_dices is GOAL:
-            game_answer = 'Congratulations, you win!'
-        elif sum_of_dices == 7:
-            game_answer = 'Alas, Casino wins!'
-        else:
-            game_answer = f'Keep, going, the goal number is {GOAL}!'
-
-    return game_answer, sum_of_dices, GOAL
-
-
 def craps():
-    """
-    This function calls the corresponding functions and prints the final result.
-    """
-    global ROLLS_COUNT
-    while True:
-        ROLLS_COUNT += 1
-        dices = simulator()
-        answer, sum_of_dices, goal = check_the_sum(dices)
-        print('~' * 50)
-        print(f'Game answer: {answer}\nSum of dices: {sum_of_dices}\nGOAL number: {goal}\n')
-        one_more = input('Want one more round?(y/n): ')
-        if one_more.lower() == 'y':
-            continue
-        else:
-            break
+    dice_2, dice_1 = simulator()
+    _sum = sum([dice_2, dice_1])
+
+    print(f'{dice_1} + {dice_2} = {_sum}')
+    if _sum in [7, 11]:
+        print('wins player')
+
+    elif _sum in [2, 3, 12]:
+        print('wins casino')
+
+    else:
+        goal = _sum
+        print('goal', goal)
+        while True:
+            dice_2, dice_1 = simulator()
+            _sum = sum([dice_2, dice_1])
+            print(f'{dice_1} + {dice_2} = {_sum}')
+
+            if _sum == goal:
+                print('wins player')
+                break
+            elif _sum == 7:
+                print('wins casino')
+                break
 
 
 if __name__ == '__main__':
