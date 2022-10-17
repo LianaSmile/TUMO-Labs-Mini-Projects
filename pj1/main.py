@@ -40,7 +40,7 @@ TEMPLATES = [
             'noun4': 'Noun',
             'adjective3': 'Adjective',
             'silly_word': 'Silly Word',
-            'c': 'Noun',
+            'noun5': 'Noun',
         }
     },
     {
