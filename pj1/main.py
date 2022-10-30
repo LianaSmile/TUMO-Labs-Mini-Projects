@@ -115,8 +115,8 @@ def process_template(template):
     This function receives the chosen template's number, and collects answers for corresponding questions from the user.
     Then adds the answers to the template and returns the final text.
     """
-    for key, value in template.get('questions').items():
-        template['questions'][key] = input(f'Type {value}: ')
+    for key in template.get('questions'):
+        template['questions'][key] = input(f'Type {key}: ')
 
     text = template.get('template')
     answers = template.get('questions')
