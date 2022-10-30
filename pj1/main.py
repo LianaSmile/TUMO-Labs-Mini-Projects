@@ -116,7 +116,7 @@ def process_template(template):
     Then adds the answers to the template and returns the final text.
     """
     for key in template.get('questions'):
-        template['questions'][key] = input(f'Type {key}: ')
+        template['questions'][key] = input(f'Type {" ".join(key.split("_")).title()}: ')
 
     text = template.get('template')
     answers = template.get('questions')
