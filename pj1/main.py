@@ -1,7 +1,7 @@
 from random import choice
 
 """
-Station Project 1 : Mad Libs
+Station Project 1 : Mad Libs!
 
 The task
 
