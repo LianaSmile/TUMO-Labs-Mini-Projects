@@ -15,7 +15,7 @@ the goal number, they lose.
 
 Your task is to recreate this game using Python. Your program should roll two dice and
 output the sum of two random numbers. By following the rules of the game, your program
-should decide whether the player wins or loses.
+should decide whether the player wins or loses!
 """
 
 def simulator():
